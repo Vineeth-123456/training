@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="flowOne" doc:id="043b42d7-0cdc-487c-8a10-7b2cdb70c1bc" >
+		<http:listener doc:name="Listener" doc:id="df4bad21-34fb-4b01-8a61-d52bddd6b7ed" config-ref="HTTP_Listener_8081" path="/dayone/flow1"/>
+		<http:request method="GET" doc:name="Request" doc:id="2493cf97-3b67-4084-995d-4853c1ff11b5" url="https://jsonplaceholder.typicode.com/comments?postId=1"/>
+	</flow>
+	<flow name="flowTwo" doc:id="fe7dca3c-1235-4d95-a8b9-de485afb5347" >
+		<http:listener doc:name="Listener" doc:id="aa685dc2-dad4-417e-bdd1-4cabe86f55f7" config-ref="HTTP_Listener_8081" path="/dayone/flow2"/>
+		<http:request method="GET" doc:name="Request" doc:id="2711c1d9-c523-4fba-aa6a-7bb9508d5b04" url="https://jsonplaceholder.typicode.com/photos"/>
+	</flow>
+	<flow name="flowThree" doc:id="011d17bd-e935-49b0-9c05-548d87702e3c" >
+		<http:listener doc:name="Listener" doc:id="461bf0ec-5568-48f3-9ee6-43fe4dff2d75" config-ref="HTTP_Listener_8081" path="/dayone/flow3"/>
+		<http:request method="GET" doc:name="Request" doc:id="3870c7d9-b03a-405e-93dc-599d39662eae" url="https://jsonplaceholder.typicode.com/albums"/>
+	</flow>
+</mule>

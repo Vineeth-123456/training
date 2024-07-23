@@ -1,0 +1,26 @@
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="ForEachFlow" doc:id="8a0a373e-aa7c-4c28-8e66-105e73eabd01" >
+		<http:listener doc:name="Listener" doc:id="bf739ebb-646f-424c-b323-4f5767b5da59" config-ref="HTTP_Listener_8081" path="/foreach"/>
+		<logger level="INFO" doc:name="Start" doc:id="2fb5799e-d790-473a-9e8d-d819e49584cf" message="#[payload]"/>
+		<set-variable value="#[[]]" doc:name="store" doc:id="3e26be56-118a-441d-9ce5-3cbe25ff8ec8" variableName="store"/>
+		<foreach doc:name="For Each" doc:id="cfa8574d-86f4-4662-b45d-4c0957281924" collection="#[payload.input1]">
+			<set-payload value="#[payload * 10]" doc:name="Set Payload" doc:id="f4c1f992-de67-4c3f-97fa-f3384dc2fefc" />
+			<set-variable value='#[vars.store + payload]' doc:name="store" doc:id="3dfd5776-23a0-4714-9ba3-c59cc02e33b1" variableName="store"/>
+		</foreach>
+		<ee:transform doc:name="Transform Message" doc:id="db4051e6-b2c8-40b5-8283-f0ecd8c5fc5c" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"output":vars.store
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="End" doc:id="37b95655-aa17-4ed1-8b35-e94cdd5cdf9a" message="#[vars.store]" />
+	</flow>
+</mule>

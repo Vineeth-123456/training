@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="daytwotaskFlow" doc:id="2dee38e2-e680-4800-9f91-3ebfa085d32d" >
+		<http:listener doc:name="Listener" doc:id="d0399a9a-2cf4-4bb9-8e03-696e105115de" path="/dayTwoGroupTwo" config-ref="HTTP_Listener_8081"/>
+		<logger level="INFO" doc:name="Start_log" doc:id="0d839553-a1a8-48ec-9b2f-4b985309a385" message="Start_log"/>
+		<set-payload value="#[[&#10;  {&#10;    &quot;id&quot;: &quot;0001&quot;,&#10;    &quot;type&quot;: &quot;donut&quot;,&#10;    &quot;name&quot;: &quot;Cake&quot;,&#10;    &quot;ppu&quot;: 0.55,&#10;    &quot;batters&quot;: {&#10;      &quot;batter&quot;: [&#10;        {&#10;          &quot;id&quot;: &quot;1001&quot;,&#10;          &quot;type&quot;: &quot;Regular&quot;&#10;        },&#10;        {&#10;          &quot;id&quot;: &quot;1002&quot;,&#10;          &quot;type&quot;: &quot;Chocolate&quot;&#10;        },&#10;        {&#10;          &quot;id&quot;: &quot;1003&quot;,&#10;          &quot;type&quot;: &quot;Blueberry&quot;&#10;        },&#10;        {&#10;          &quot;id&quot;: &quot;1004&quot;,&#10;          &quot;type&quot;: &quot;Devil's Food&quot;&#10;        }&#10;      ]&#10;    },&#10;    &quot;topping&quot;: [&#10;      {&#10;        &quot;id&quot;: &quot;5001&quot;,&#10;        &quot;type&quot;: &quot;None&quot;&#10;      },&#10;      {&#10;        &quot;id&quot;: &quot;5002&quot;,&#10;        &quot;type&quot;: &quot;Glazed&quot;&#10;      },&#10;      {&#10;        &quot;id&quot;: &quot;5005&quot;,&#10;        &quot;type&quot;: &quot;Sugar&quot;&#10;      },&#10;      {&#10;        &quot;id&quot;: &quot;5007&quot;,&#10;        &quot;type&quot;: &quot;Powdered Sugar&quot;&#10;      },&#10;      {&#10;        &quot;id&quot;: &quot;5006&quot;,&#10;        &quot;type&quot;: &quot;Chocolate with Sprinkles&quot;&#10;      },&#10;      {&#10;        &quot;id&quot;: &quot;5003&quot;,&#10;        &quot;type&quot;: &quot;Chocolate&quot;&#10;      },&#10;      {&#10;        &quot;id&quot;: &quot;5004&quot;,&#10;        &quot;type&quot;: &quot;Maple&quot;&#10;      }&#10;    ]&#10;  },&#10;  {&#10;    &quot;id&quot;: &quot;0002&quot;,&#10;    &quot;type&quot;: &quot;donut&quot;,&#10;    &quot;name&quot;: &quot;Raised&quot;,&#10;    &quot;ppu&quot;: 0.55,&#10;    &quot;batters&quot;: {&#10;      &quot;batter&quot;: [&#10;        {&#10;          &quot;id&quot;: &quot;1001&quot;,&#10;          &quot;type&quot;: &quot;Regular&quot;&#10;        }&#10;      ]&#10;    },&#10;    &quot;topping&quot;: [&#10;      {&#10;        &quot;id&quot;: &quot;5001&quot;,&#10;        &quot;type&quot;: &quot;None&quot;&#10;      },&#10;      {&#10;        &quot;id&quot;: &quot;5002&quot;,&#10;        &quot;type&quot;: &quot;Glazed&quot;&#10;      },&#10;      {&#10;        &quot;id&quot;: &quot;5005&quot;,&#10;        &quot;type&quot;: &quot;Sugar&quot;&#10;      },&#10;      {&#10;        &quot;id&quot;: &quot;5003&quot;,&#10;        &quot;type&quot;: &quot;Chocolate&quot;&#10;      },&#10;      {&#10;        &quot;id&quot;: &quot;5004&quot;,&#10;        &quot;type&quot;: &quot;Maple&quot;&#10;      }&#10;    ]&#10;  },&#10;  {&#10;    &quot;id&quot;: &quot;0003&quot;,&#10;    &quot;type&quot;: &quot;donut&quot;,&#10;    &quot;name&quot;: &quot;Old Fashioned&quot;,&#10;    &quot;ppu&quot;: 0.55,&#10;    &quot;batters&quot;: {&#10;      &quot;batter&quot;: [&#10;        {&#10;          &quot;id&quot;: &quot;1001&quot;,&#10;          &quot;type&quot;: &quot;Regular&quot;&#10;        },&#10;        {&#10;          &quot;id&quot;: &quot;1002&quot;,&#10;          &quot;type&quot;: &quot;Chocolate&quot;&#10;        }&#10;      ]&#10;    },&#10;    &quot;topping&quot;: [&#10;      {&#10;        &quot;id&quot;: &quot;5001&quot;,&#10;        &quot;type&quot;: &quot;None&quot;&#10;      },&#10;      {&#10;        &quot;id&quot;: &quot;5002&quot;,&#10;        &quot;type&quot;: &quot;Glazed&quot;&#10;      },&#10;      {&#10;        &quot;id&quot;: &quot;5003&quot;,&#10;        &quot;type&quot;: &quot;Chocolate&quot;&#10;      },&#10;      {&#10;        &quot;id&quot;: &quot;5004&quot;,&#10;        &quot;type&quot;: &quot;Maple&quot;&#10;      }&#10;    ]&#10;  }&#10;]]" doc:name="Set Payload" doc:id="64407ffb-583e-49e2-abcc-009137cea67a" />
+		<set-variable value="#[payload[0].id]" doc:name="Set Variable" doc:id="9ae0dc2e-abd7-432d-b478-801b8f139faa" variableName="id1" />
+		<ee:transform doc:name="Transform Message" doc:id="4a87c6b4-70bf-401a-b882-0337f7fff0e0">
+			<ee:message>
+			</ee:message>
+			<ee:variables>
+				<ee:set-variable variableName="ppu1"><![CDATA[payload[0].ppu]]></ee:set-variable>
+			</ee:variables>
+		</ee:transform>
+		<flow-ref doc:name="Flow Reference" doc:id="89cc4bdf-1899-4271-85d5-f36e861f3bff" name="subFlow"/>
+		<logger level="INFO" doc:name="End_log" doc:id="7f5d5aaa-46d6-4bba-8be1-794158b8c667" message="End_log"/>
+		<error-handler>
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="cbaa73ea-b41d-47f5-821c-ff9f4128f424" type="VALIDATION" when="InVALIDATE">
+				<ee:transform doc:name="Transform Message" doc:id="41ea9524-269b-4117-b2ee-c7151374191c">
+					<ee:message>
+						<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"error": "There is Validation Error"
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</on-error-propagate>
+		</error-handler>
+	</flow>
+	<sub-flow name="subFlow" doc:id="7a94a02b-7875-44ce-b444-9f909d635e64" >
+		<choice doc:name="Choice" doc:id="ce6187c7-caa7-41b0-8b41-355e5d0bd822" >
+			<when expression='#[vars.id1 == "0001" and vars.ppu1 == 0.55]' >
+				<ee:transform doc:name="Transform Message" doc:id="1d327597-069d-4331-a0f1-ca79c062ca5b" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+    "id": "0001",
+    "Name": "Hyderabad - " ++ (payload."type"[0]),
+    "Price": "125 INR",
+    "battersAndToppings": [
+        {
+            "id": (payload.batters.batter[0].id[0] ++ "_" ++ payload.batters.batter[0].id[1] ++ "_" ++ payload.batters.batter[0].id[3]),
+            "type": (payload.batters.batter[0]."type"[0] ++ "**" ++ payload.batters.batter[0]."type"[1] ++ "**" ++ payload.batters.batter[0]."type"[2])
+        },
+        {
+            "id": (payload.topping[0].id[0] ++ " + " ++ payload.topping[0].id[1] ++ " + " ++ payload.topping[0].id[2]),
+            "type": (payload.topping[0]."type"[0] ++ " + " ++  payload.topping[0]."type"[1] ++ "_" ++  payload.topping[0]."type"[2] ++ " + OK")
+        }
+    ]
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</when>
+			<when expression='#[vars.id1 == "0002" and vars.ppu1 &gt;= 0.55]' >
+				<ee:transform doc:name="Transform Message" doc:id="d783f2ff-afa0-499b-a0be-2b49bafc0503" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+    "id": "0002",
+    "Name": "Bangalore - donut",
+    "Price": "25 USD",
+    "battersAndToppings": [
+        {
+            "id": payload[1].batters.batter[0].id,
+            "type": (payload[1].batters.batter[0]."type" ++ " Soda fresh")
+        },
+        {
+            "id": (payload[1].topping[0].id ++ payload[1].topping[1].id ++ payload[1].topping[2].id ++ payload[1].topping[3].id ++ payload[1].topping[4].id),
+            "type": (payload[1].topping[1].id ++ "-" ++ payload[1].topping[1]."type" ++ " _ " ++ payload[1].topping[2].id ++ "-" ++ payload[1].topping[2]."type")
+        }
+    ]
+}
+]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</when>
+			<when expression='vars.id1 == "0004"'>
+				<raise-error doc:name="customError" doc:id="148336e6-0fc5-4aa7-993d-affac1210fc5" type="own:MULE" description="somethingIsWrong"/>
+			</when>
+			<otherwise >
+				<ee:transform doc:name="Transform Message" doc:id="89198502-52e1-4779-9b0a-4ec1c53284ed" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+    "id": "0003",
+    "type": payload[2]."type",
+    "name": payload[2].name,
+    "ppu": payload[2].ppu ++ " * 256.362",
+    "battersAndToppings": {
+        "id": (payload[2].batters.batter[0].id ++ " - " ++ payload[2].batters.batter[1].id ++ " - " ++ payload[2].topping[0].id ++ " - " ++ payload[2].topping[1].id ++ " - " ++ payload[2].topping[2].id ++ " - " ++ payload[2].topping[3].id),
+        "type": (payload[2].batters.batter[0]."type" ++ " - " ++ payload[2].batters.batter[1]."type" ++ " - " ++ payload[2].topping[0]."type" ++ " - " ++ payload[2].topping[1]."type" ++ " - " ++ payload[2].topping[2]."type" ++ " - " ++ payload[2].topping[3]."type")
+    }
+}
+]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</otherwise>
+		</choice>
+	</sub-flow>
+</mule>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="FlowOne" doc:id="6012ebe7-47b5-49f7-b2d6-073ab2ca9ba5" >
+		<http:listener doc:name="Listener" doc:id="f33db168-cf7d-4c0b-8206-0464ff9d01f3" config-ref="HTTP_Listener_8081" path="/Vineeth/q1"/>
+		<http:request method="GET" doc:name="Invoking ReqRes 1" doc:id="15a422b8-4a94-4a61-b14b-c332626e4226" url="https://reqres.in/api/users?page=2"/>
+	</flow>
+	<flow name="FlowTwo" doc:id="712d2e8d-9875-4c51-b7ab-956c929a5357" >
+		<http:listener doc:name="Listener" doc:id="7b72da65-0b53-4c74-af7d-57c97ae481a7" config-ref="HTTP_Listener_8081" path="/Vineeth/q2"/>
+		<http:request method="GET" doc:name="Invoking ReqRes 2" doc:id="ce9a9c5d-da8b-412c-8851-be32036b5fc6" url="https://reqres.in/api/users/2"/>
+	</flow>
+</mule>

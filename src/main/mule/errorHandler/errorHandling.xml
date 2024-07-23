@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<error-handler name="errorHandlingError_Handler" doc:id="4dc5fb0f-4eec-4dae-96cb-7b36d7eae41a" >
+		<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="4e9dd60b-a409-4aad-b425-a1724025845c" type="CONNECTIVITY" when="CONNECTIVITY error">
+			<ee:transform doc:name="Transform Message" doc:id="b8c4ac8d-6840-4d44-a40c-87f91b969bb4" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"error": "There is connection error"
+}]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+		</on-error-continue>
+	</error-handler>
+	<error-handler name="errorHandlingError_Handler2" doc:id="297d1b91-c5e2-4c94-8085-09b8792c4581" >
+		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="f4f60973-0eb7-489a-9206-ecbe61ccd590" type="VALIDATION" when="VALIDATION error">
+			<ee:transform doc:name="Transform Message" doc:id="89a1f5f5-d094-421d-b6da-8ecbe9441a27" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"error": "There is Validation Error"
+}]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+		</on-error-propagate>
+	</error-handler>
+	<error-handler name="errorHandlingError_Handler1" doc:id="7a96b869-d3f3-4418-bcf4-31c18c19e9d6" >
+		<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="06205e69-79a9-4125-b334-9bd005d7edc9" type="OWN:Mule" when="OWN error">
+			<ee:transform doc:name="Transform Message" doc:id="bd8068c3-827c-48a4-9409-8d13c5418572" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"error":"Something wrong did by us"
+}]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+		</on-error-continue>
+	</error-handler>
+	<error-handler name="ANY_Handler" doc:id="271c9bb0-14dc-4f75-a456-4e8d147d8cd8" >
+		<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue  ANY" doc:id="4157ec1e-d389-4561-ae41-eb8d55208774" type="ANY" when="Any type">
+			<ee:transform doc:name="Transform Message" doc:id="77af16e9-8de8-4460-80a3-b13403becdf9" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"error":"Any type of error is handled here"
+}]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+		</on-error-continue>
+	</error-handler>
+	<error-handler name="EXPRESSION_Handler" doc:id="5e83e9cc-9d41-4e73-90c2-1d63779b71e2" >
+		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate EXPRESSION" doc:id="c139872c-66df-40b7-996b-564e8f2d7835" type="EXPRESSION" when="EXPRESSION type">
+			<ee:transform doc:name="Transform Message" doc:id="9e9ce8df-2171-4400-9fd2-4721d6a9607f" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"error": "Arithematic Errors are handled here"
+}]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+		</on-error-propagate>
+	</error-handler>
+</mule>
